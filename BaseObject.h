@@ -23,9 +23,6 @@ public:
 
 	virtual void Draw(SDL_Renderer* ren);
 
-	//virtual void Render(SDL_Renderer* ren) = 0;
 };
-
-
 
 #endif // !BASE_OBJECT_H_
