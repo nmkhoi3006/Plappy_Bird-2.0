@@ -73,20 +73,18 @@ void Bird::Jump() {
 	}
 }
 
-void Bird::HandleInput(SDL_Event e) {
- 	if (e.type == SDL_KEYDOWN) {
-		switch (e.key.keysym.sym)
-		{
-		case SDLK_SPACE:
-			//Jump();
-			playing = true;
-			Jumpping = true;
-			break;
-		default:
-			break;
-		}
+void Bird::HandleInput(SDL_Event e, Mix_Chunk* wing) {
+	switch (e.key.keysym.sym)
+	{
+	case SDLK_SPACE:
+		//Jump();
+		playing = true;
+		Jumpping = true;
+		Mix_PlayChannel(-1, wing, 0);
+		break;
+	default:
+		break;
 	}
-	
 }
 
 bool Bird::PlayerIsPlaying() {

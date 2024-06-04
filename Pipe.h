@@ -19,8 +19,8 @@ public:
 
 	int randomHeight();
 
-	void updateTopPipe(int index, bool birdDie);
-	void updateBottomPipe(int index, bool birdDie);
+	void updateTopPipe(int index, bool isPlaying, bool birdDie);
+	void updateBottomPipe(int index, bool isPlaying, bool birdDie);
 
 };
 #endif // !PIPE_H_

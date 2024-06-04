@@ -26,7 +26,7 @@ public:
 	~Bird();
 	//void SetClip(BaseObject b0, BaseObject b1, BaseObject b2, SDL_Renderer* ren);
 	void update();
-	void HandleInput(SDL_Event e);
+	void HandleInput(SDL_Event e, Mix_Chunk* wing);
 
 	void Draw(SDL_Renderer* ren) override;
 	void Jump();

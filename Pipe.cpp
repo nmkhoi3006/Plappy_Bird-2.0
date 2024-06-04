@@ -15,13 +15,13 @@ void Pipe::initPipe(int pos) {
 	g_heightBottomPipe[pos] = SCREEN_HEIGHT - g_heightTopPipe[pos] - SPACE;
 }
 
-void Pipe::updateTopPipe(int index, bool birdDie) {
+void Pipe::updateTopPipe(int index, bool isPlaying, bool birdDie) {
 	if (g_xPos[index] <= -PIPE_WIDTH) {
 		g_heightTopPipe[index] = randomHeight();
 		g_xPos[index] = 900;
 	}
 	else {
-		if (!birdDie) {
+		if (isPlaying && !birdDie) {
 			//moving pipe
 			g_xPos[index] -= MOVING_PIPE;
 		}
@@ -29,7 +29,7 @@ void Pipe::updateTopPipe(int index, bool birdDie) {
 	this->SetDest(g_xPos[index], 0, PIPE_WIDTH, g_heightTopPipe[index]);
 }
 
-void Pipe::updateBottomPipe(int index, bool birdDie) {
+void Pipe::updateBottomPipe(int index, bool isPlaying, bool birdDie) {
 	g_heightBottomPipe[index] = g_heightTopPipe[index] + SPACE;
 	this->SetDest(g_xPos[index], g_heightBottomPipe[index], PIPE_WIDTH, SCREEN_HEIGHT - g_heightBottomPipe[index] - 56);
 }

@@ -19,6 +19,13 @@ private:
 
 	Bird* bird;
 
+	Mix_Music* Music;
+
+	Mix_Chunk* wing;
+	Mix_Chunk* die;
+	Mix_Chunk* hit;
+	Mix_Chunk* point;
+
 public:
 	Game();
 	~Game();
