@@ -33,3 +33,4 @@ void Pipe::updateBottomPipe(int index, bool isPlaying, bool birdDie) {
 	g_heightBottomPipe[index] = g_heightTopPipe[index] + SPACE;
 	this->SetDest(g_xPos[index], g_heightBottomPipe[index], PIPE_WIDTH, SCREEN_HEIGHT - g_heightBottomPipe[index] - 56);
 }
+void Pipe
