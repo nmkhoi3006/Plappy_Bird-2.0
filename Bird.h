@@ -32,7 +32,7 @@ public:
 	void Jump();
 	double GetTimeJump();
 
-	bool PlayerIsPlaying();
+	bool PlayerIsPlaying(); 
 
 	bool checkCollision(SDL_Rect Object);
 
