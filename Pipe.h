@@ -6,11 +6,14 @@
 
 static int g_heightBottomPipe[3];
 static int g_heightTopPipe[3];
-static int g_xPos[3];
+static int g_xPosPipe[3];
 
 class Pipe : public BaseObject {
+private:
+	int Width;
+	int Height;
 public:
-	Pipe() { ; }
+	Pipe();
 	~Pipe() { ; }
 
 	void Draw(SDL_Renderer* ren) override;

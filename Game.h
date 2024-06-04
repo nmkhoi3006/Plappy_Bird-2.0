@@ -7,6 +7,7 @@ class BaseObject;
 class Background;
 class Bird;
 class Pipe;
+class Score;
 
 class Game {
 private:
@@ -18,6 +19,8 @@ private:
 	BaseObject* background;
 
 	Bird* bird;
+
+	Score* Coin;
 
 	Mix_Music* Music;
 

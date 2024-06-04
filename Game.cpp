@@ -13,6 +13,8 @@ Game::Game() {
 
 	bird = new Bird();
 
+	Coin = NULL;
+
 	Music = NULL;
 
 	wing = NULL;
@@ -101,8 +103,23 @@ void Game::update() {
 	for (int i = 0; i < 3; i++) {
 		topPipe[i].updateTopPipe(i, bird->PlayerIsPlaying(), bird->checkBirdDie());
 		bottomPipe[i].updateBottomPipe(i, bird->PlayerIsPlaying(), bird->checkBirdDie());
+		Coin->Update(i);
 	}
 
+	for (int i = 0; i < 3; i++) {
+		if (bird->checkCollision(topPipe[i].GetDest()) || bird->checkCollision(bottomPipe[i].GetDest())) {
+			Mix_PlayChannel(-1, hit, 0);
+			Mix_PlayChannel(-1, die, 0);
+			bird->gameOver();
+
+		}
+		int xBird = bird->GetDest().x;
+		int yBird = bird->GetDest().y;
+		if (xBird == xCoin[i] && yBird == yCoin[i]) {
+			eated[i] = true;
+			Mix_PlayChannel(-1, point, 0);
+		}
+	}
 }
 
 void Game::render() {
@@ -165,15 +182,6 @@ void Game::handleEvent() {
 		}
 		break;
 	}
-	for (int i = 0; i < 3; i++) {
-		if (bird->checkCollision(topPipe[i].GetDest()) || bird->checkCollision(bottomPipe[i].GetDest())) {
-			Mix_PlayChannel(-1, hit, 0);
-			Mix_PlayChannel(-1, die, 0);
-			bird->gameOver();
-
-		}
-	}
-	
 }
 
 bool Game::Running() {
