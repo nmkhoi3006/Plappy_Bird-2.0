@@ -25,6 +25,10 @@ public:
 	void updateTopPipe(int index, bool isPlaying, bool birdDie);
 	void updateBottomPipe(int index, bool isPlaying, bool birdDie);
 
+	int getXPos(int i);
+	int GetHeightBottomPipe(int i);
+	int GetHeightTopPipe(int i);
+
 };
 #endif // !PIPE_H_
 

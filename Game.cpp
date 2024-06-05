@@ -103,7 +103,7 @@ void Game::update() {
 	for (int i = 0; i < 3; i++) {
 		topPipe[i].updateTopPipe(i, bird->PlayerIsPlaying(), bird->checkBirdDie());
 		bottomPipe[i].updateBottomPipe(i, bird->PlayerIsPlaying(), bird->checkBirdDie());
-		Coin->Update(i);
+		Coin->Update(i, topPipe[i]);
 	}
 
 	for (int i = 0; i < 3; i++) {
@@ -113,12 +113,7 @@ void Game::update() {
 			bird->gameOver();
 
 		}
-		int xBird = bird->GetDest().x;
-		int yBird = bird->GetDest().y;
-		if (xBird == xCoin[i] && yBird == yCoin[i]) {
-			eated[i] = true;
-			Mix_PlayChannel(-1, point, 0);
-		}
+		Coin->checkEated(i, bird, point);
 	}
 }
 

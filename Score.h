@@ -13,9 +13,12 @@ private:
 	int coinHeight;
 public:
 
-	void Update(int i);
 	Score();
+	void Update(int i, Pipe a);
+	void checkEated(int i, Bird* a, Mix_Chunk* point);
 
+	int GetXCoin(int i);
+	int GetYCoin(int i);
 };
 
 #endif // !SCORE_H_
