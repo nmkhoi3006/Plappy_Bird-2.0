@@ -13,6 +13,7 @@
 #include "Pipe.h"
 #include "Background.h"
 #include "Score.h"
+#include "TextObject.h"
 #include <ctime>
 
 //screen

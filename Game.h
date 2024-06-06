@@ -8,11 +8,14 @@ class Background;
 class Bird;
 class Pipe;
 class Score;
+class TextObject;
 
 class Game {
 private:
 	SDL_Window* window;
 	SDL_Renderer* ren;
+
+	int score_val;
 
 	bool isRunning;
 
@@ -29,6 +32,9 @@ private:
 	Mix_Chunk* hit;
 	Mix_Chunk* point;
 
+	TextObject* T_Plappy;
+	TextObject* T_Bird;
+	TextObject* T_Score;
 public:
 	Game();
 	~Game();

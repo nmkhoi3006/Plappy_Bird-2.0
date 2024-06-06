@@ -139,12 +139,14 @@
     <ClCompile Include="BaseObject.cpp" />
     <ClCompile Include="Pipe.cpp" />
     <ClCompile Include="Score.cpp" />
+    <ClCompile Include="TextObject.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Background.h" />
     <ClInclude Include="BaseObject.h" />
     <ClInclude Include="Bird.h" />
     <ClInclude Include="Common_Funtions.h" />
+    <ClInclude Include="TextObject.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Pipe.h" />
     <ClInclude Include="Score.h" />

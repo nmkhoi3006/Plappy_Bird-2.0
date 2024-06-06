@@ -107,7 +107,6 @@ bool Bird::checkCollision(SDL_Rect Object) {
 	topB = Object.y;
 	bottomB = topB + Object.h;
 
-	//tim thay cach tach khoi canh kia
 	if (bottomA <= topB)
 		return false;
 	if (topA >= bottomB)
@@ -116,7 +115,6 @@ bool Bird::checkCollision(SDL_Rect Object) {
 		return false;
 	if (leftA >= rightB)
 		return false;
-	//cac truong hop con lai
 	return true;
 }
 

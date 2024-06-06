@@ -13,7 +13,7 @@ Game::Game() {
 
 	bird = new Bird();
 
-	Coin = NULL;
+	Coin = new Score();
 
 	Music = NULL;
 
@@ -21,6 +21,11 @@ Game::Game() {
 	die = NULL;
 	hit = NULL;
 	point = NULL;
+
+	T_Plappy = new TextObject();
+	T_Bird = new TextObject();
+	T_Score = new TextObject();
+	score_val = 0;
 }
 
 Game::~Game() {
@@ -56,6 +61,12 @@ void Game::init(const char* title, int xpos, int ypos, int weidth, int hight) {
 
 	bird->CreateTexture("IMG/bird0.png", ren);
 
+	T_Plappy->Write("Plappy", "FontText/abc.ttf", ren, 300);
+	T_Bird->Write("Bird", "FontText/abc.ttf", ren, 300);
+	T_Plappy->SetDest(20, 20, 500, 100);
+	T_Bird->SetDest(100, 150, 300, 100);
+
+	T_Score->Write("Score:", "FontText/123.ttf", ren, 72);
 
 	//init SDL_mixer;
 	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
@@ -113,8 +124,13 @@ void Game::update() {
 			bird->gameOver();
 
 		}
-		Coin->checkEated(i, bird, point);
+		Coin->checkEated(i, bird, point, score_val);
 	}
+
+	std::string tmp = "Score:";
+	tmp += std::to_string(score_val);
+	T_Score->Write(tmp, "FontText/123.ttf", ren, 72);
+	//T_Score->SetDest(0, 0, 150, 80);
 }
 
 void Game::render() {
@@ -128,6 +144,11 @@ void Game::render() {
 		topPipe[i].Draw(ren);
 		bottomPipe[i].Draw(ren);
 	}
+
+	T_Plappy->Draw(ren);
+	T_Bird->Draw(ren);
+
+	T_Score->Draw(ren);
 
 	SDL_RenderPresent(ren);
 }
@@ -151,6 +172,9 @@ void Game::handleEvent() {
 	{
 		bird->HandleInput(e, wing);
 		Mix_FreeMusic(Music);
+		T_Score->SetDest(0, 0, 150, 80);
+		T_Plappy->SetDest(0, 0, 0, 0);
+		T_Bird->SetDest(0, 0, 0, 0);
 		Music = NULL;
 	}
 	default:
