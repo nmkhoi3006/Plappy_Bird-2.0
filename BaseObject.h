@@ -26,3 +26,4 @@ public:
 };
 
 #endif // !BASE_OBJECT_H_
+

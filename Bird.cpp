@@ -2,7 +2,7 @@
 #include "Pipe.h"
 
 Bird::Bird() {
-	width = BIRD_WIDHT;
+	width = BIRD_WIDTH;
 	height = BIRD_HEIGHT;
 
 	Jumpping = false;
@@ -49,7 +49,7 @@ void Bird::update() {
 
 	bird_pos += speed/4.55;
 	speed += G/2.5;
-	SetDest(110, (int)bird_pos, BIRD_WIDHT, BIRD_HEIGHT);
+	SetDest(110, (int)bird_pos, BIRD_WIDTH, BIRD_HEIGHT);
 }
 
 void Bird::Draw(SDL_Renderer* ren) {
@@ -107,7 +107,6 @@ bool Bird::checkCollision(SDL_Rect Object) {
 	topB = Object.y;
 	bottomB = topB + Object.h;
 
-	//tim thay cach tach khoi canh kia
 	if (bottomA <= topB)
 		return false;
 	if (topA >= bottomB)
@@ -116,7 +115,6 @@ bool Bird::checkCollision(SDL_Rect Object) {
 		return false;
 	if (leftA >= rightB)
 		return false;
-	//cac truong hop con lai
 	return true;
 }
 
