@@ -9,9 +9,13 @@ Game::Game() {
 
 	isRunning = false;
 
+	loading = false;
+
 	background = new Background();
 
 	bird = new Bird();
+
+	myMenu = new Menu();
 
 	Coin = new Score();
 
@@ -60,6 +64,8 @@ void Game::init(const char* title, int xpos, int ypos, int weidth, int hight) {
 	background->CreateTexture("IMG/bg.png", ren);
 
 	bird->CreateTexture("IMG/bird0.png", ren);
+
+	myMenu->initMenu(ren);
 
 	T_Plappy->Write("Plappy", "FontText/abc.ttf", ren, 300);
 	T_Bird->Write("Bird", "FontText/abc.ttf", ren, 300);
@@ -112,8 +118,8 @@ void Game::update() {
 	bird->update();
 
 	for (int i = 0; i < 3; i++) {
-		topPipe[i].updateTopPipe(i, bird->PlayerIsPlaying(), bird->checkBirdDie());
-		bottomPipe[i].updateBottomPipe(i, bird->PlayerIsPlaying(), bird->checkBirdDie());
+		topPipe[i].updateTopPipe(i, bird->playing, bird->checkBirdDie());
+		bottomPipe[i].updateBottomPipe(i, bird->playing, bird->checkBirdDie());
 		Coin->Update(i, topPipe[i]);
 	}
 
@@ -149,6 +155,9 @@ void Game::render() {
 
 	T_Score->Draw(ren);
 
+	myMenu->Draw(ren);
+	loading = true;
+
 	SDL_RenderPresent(ren);
 }
 
@@ -176,6 +185,10 @@ void Game::handleEvent() {
 		T_Bird->SetDest(0, 0, 0, 0);
 		Music = NULL;
 		break;
+	}
+	case SDL_MOUSEMOTION:
+	{
+		myMenu->selectButton(e, loading, bird->playing);
 	}
 	default:
 		if (Mix_PlayingMusic() == 0)

@@ -12,7 +12,7 @@ Menu::Menu() {
 	button[SOUND]->setPosition(245, 100);*/
 }
 
-bool Menu::selectButton(SDL_Event e, bool loading) {
+void Menu::selectButton(SDL_Event e, bool loading, bool& playing) {
 	while (loading) {
 		for (Button* b : button) {
 			b->handleIntersection(e);
@@ -21,17 +21,31 @@ bool Menu::selectButton(SDL_Event e, bool loading) {
 			switch (e.type) {
 			case SDL_MOUSEBUTTONDOWN:
 				if (e.button.state == SDL_BUTTON_LEFT) {
-					if (button[PLAY]->intersect)
-						return true;
+					if (button[PLAY]->intersect) {
+						Update();
+						playing = true;
+						return;
+
+					}
 					if (button[QUIT]->intersect) {
-						return false;
+						return;
 					}
 				}
 				break;
+			default:
+				break;
 			}
+
 		}
 	}
 }
+
+void Menu::Update() {
+	for (int i = 0; i < 2; i++) {
+		button[i]->SetDest(0, 0, 0, 0);
+	}
+}
+
 void Menu::Draw(SDL_Renderer* ren) {
 	for (int i = 0; i < 2; i++) {
 		SDL_Rect dst = button[i]->GetDest();
@@ -45,6 +59,6 @@ Menu::~Menu() {
 }
 
 void Menu::initMenu(SDL_Renderer* ren) {
-	button[PLAY]->CreateTexture("IMG/play.png", ren);
+	button[PLAY]->CreateTexture("IMG/Play.png", ren);
 	button[QUIT]->CreateTexture("IMG/play.png", ren);
 }

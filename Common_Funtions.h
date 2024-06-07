@@ -14,6 +14,8 @@
 #include "Background.h"
 #include "Score.h"
 #include "TextObject.h"
+#include "Menu.h"
+#include "Button.h"
 #include <ctime>
 
 //screen

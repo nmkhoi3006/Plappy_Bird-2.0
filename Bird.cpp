@@ -29,18 +29,20 @@ Bird::~Bird() {
 //}
 
 void Bird::update() {
+	if (!playing) {
+		SetDest(0, 0, 0, 0);
+		return;
+	}
+
 	if (birdDie) {
 		Jumpping = false;
 	}
+
 	if (Jumpping) {
 		speed = jumpHeight;
 		Jumpping = false;
 	}
 
-	if (!playing) {
-		bird_pos = 300;
-		speed = 0;
-	}
 	if (bird_pos >= SCREEN_HEIGHT - BIRD_HEIGHT) {
 		gameOver();
 		bird_pos = SCREEN_HEIGHT - BIRD_HEIGHT;
@@ -85,10 +87,6 @@ void Bird::HandleInput(SDL_Event e, Mix_Chunk* wing) {
 	default:
 		break;
 	}
-}
-
-bool Bird::PlayerIsPlaying() {
-	return playing;
 }
 
 bool Bird::checkCollision(SDL_Rect Object) {

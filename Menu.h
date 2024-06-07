@@ -9,8 +9,9 @@ public:
 	Button* button[4];
 	enum buttonNames { PLAY, QUIT, HELP, SOUND };
 	Menu();
-	bool selectButton(SDL_Event e, bool loading);
+	void selectButton(SDL_Event e, bool loading, bool &playing);
 	void Draw(SDL_Renderer* ren) override;
 	void initMenu(SDL_Renderer* ren);
+	void Update();
 	~Menu();
 };

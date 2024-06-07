@@ -9,6 +9,8 @@ class Bird;
 class Pipe;
 class Score;
 class TextObject;
+class Button;
+class Menu;
 
 class Game {
 private:
@@ -19,9 +21,13 @@ private:
 
 	bool isRunning;
 
+	bool loading;
+
 	BaseObject* background;
 
 	Bird* bird;
+
+	Menu* myMenu;
 
 	Score* Coin;
 
