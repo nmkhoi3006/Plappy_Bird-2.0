@@ -172,8 +172,8 @@ void Game::handleEvent() {
 		bird->HandleInput(e, wing);
 		Mix_FreeMusic(Music);
 		T_Score->SetDest(0, 0, 150, 80);
-		//T_Plappy->SetDest(0, 0, 0, 0);
-		//T_Bird->SetDest(0, 0, 0, 0);
+		T_Plappy->SetDest(0, 0, 0, 0);
+		T_Bird->SetDest(0, 0, 0, 0);
 		Music = NULL;
 		break;
 	}
