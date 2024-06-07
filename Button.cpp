@@ -11,8 +11,8 @@ void Button::setPosition(int x, int y) {
 	dest.y = y;
 }
 
-void Button::handleIntersection(SDL_Event* e) {
-	if (e->type == SDL_MOUSEMOTION) {
+void Button::handleIntersection(SDL_Event e) {
+	if (e.type == SDL_MOUSEMOTION) {
 		int x, y;
 		SDL_GetMouseState(&x, &y);
 		SDL_Rect* mouse = new SDL_Rect{ x, y, 100, 100 };

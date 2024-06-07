@@ -9,7 +9,7 @@ public:
 	Button(int x, int y);
 	void setPosition(int x, int y);
 	void Draw(SDL_Renderer* ren) override;
-	void handleIntersection(SDL_Event *e);
+	void handleIntersection(SDL_Event e);
 	
 };
 

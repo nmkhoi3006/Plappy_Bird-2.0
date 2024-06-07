@@ -134,9 +134,11 @@
   <ItemGroup>
     <ClCompile Include="Background.cpp" />
     <ClCompile Include="Bird.cpp" />
+    <ClCompile Include="Button.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="BaseObject.cpp" />
+    <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Pipe.cpp" />
     <ClCompile Include="Score.cpp" />
     <ClCompile Include="TextObject.cpp" />
@@ -145,7 +147,9 @@
     <ClInclude Include="Background.h" />
     <ClInclude Include="BaseObject.h" />
     <ClInclude Include="Bird.h" />
+    <ClInclude Include="Button.h" />
     <ClInclude Include="Common_Funtions.h" />
+    <ClInclude Include="Menu.h" />
     <ClInclude Include="TextObject.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Pipe.h" />

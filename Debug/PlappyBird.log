@@ -12,9 +12,17 @@ D:\PlappyBird\PlappyBird\Common_Funtions.h(26,17): warning C4305: 'initializing'
   
 D:\PlappyBird\PlappyBird\Bird.cpp(36,11): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
 D:\PlappyBird\PlappyBird\Bird.cpp(50,19): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+  Button.cpp
+D:\PlappyBird\PlappyBird\Common_Funtions.h(26,17): warning C4305: 'initializing': truncation from 'double' to 'float'
+  (compiling source file 'Button.cpp')
+  
   Game.cpp
 D:\PlappyBird\PlappyBird\Common_Funtions.h(26,17): warning C4305: 'initializing': truncation from 'double' to 'float'
   (compiling source file 'Game.cpp')
+  
+  Menu.cpp
+D:\PlappyBird\PlappyBird\Common_Funtions.h(26,17): warning C4305: 'initializing': truncation from 'double' to 'float'
+  (compiling source file 'Menu.cpp')
   
   Pipe.cpp
 D:\PlappyBird\PlappyBird\Common_Funtions.h(26,17): warning C4305: 'initializing': truncation from 'double' to 'float'
@@ -35,4 +43,5 @@ D:\PlappyBird\PlappyBird\Common_Funtions.h(26,17): warning C4305: 'initializing'
   
 D:\PlappyBird\PlappyBird\main.cpp(29,25): warning C4244: 'argument': conversion from 'Uint64' to 'Uint32', possible loss of data
   Generating Code...
+D:\PlappyBird\PlappyBird\Menu.cpp(34,1): warning C4715: 'Menu::selectButton': not all control paths return a value
   PlappyBird.vcxproj -> D:\PlappyBird\Debug\PlappyBird.exe

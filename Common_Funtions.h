@@ -35,5 +35,9 @@ const int MOVING_PIPE = 1;
 const int COIN_WIDTH = 55;
 const int COIN_HEIGHT = 55;
 
+//score
+const int SCORE_WIDTH = 80;
+const int SCORE_HEIGHT = 40;
+
 #endif // !COMMON_FUNTIONS_H_
  
