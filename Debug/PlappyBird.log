@@ -1,6 +1,5 @@
-﻿  Pipe.cpp
+﻿  Game.cpp
 D:\PlappyBird\PlappyBird\Common_Funtions.h(26,17): warning C4305: 'initializing': truncation from 'double' to 'float'
-  (compiling source file 'Pipe.cpp')
+  (compiling source file 'Game.cpp')
   
-D:\PlappyBird\PlappyBird\Pipe.cpp(17,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
   PlappyBird.vcxproj -> D:\PlappyBird\Debug\PlappyBird.exe

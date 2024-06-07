@@ -130,7 +130,6 @@ void Game::update() {
 	std::string tmp = "Score:";
 	tmp += std::to_string(score_val);
 	T_Score->Write(tmp, "FontText/123.ttf", ren, 72);
-	//T_Score->SetDest(0, 0, 150, 80);
 }
 
 void Game::render() {
@@ -173,9 +172,10 @@ void Game::handleEvent() {
 		bird->HandleInput(e, wing);
 		Mix_FreeMusic(Music);
 		T_Score->SetDest(0, 0, 150, 80);
-		T_Plappy->SetDest(0, 0, 0, 0);
-		T_Bird->SetDest(0, 0, 0, 0);
+		//T_Plappy->SetDest(0, 0, 0, 0);
+		//T_Bird->SetDest(0, 0, 0, 0);
 		Music = NULL;
+		break;
 	}
 	default:
 		if (Mix_PlayingMusic() == 0)
