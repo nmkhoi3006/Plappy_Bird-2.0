@@ -7,17 +7,23 @@ class BaseObject;
 class Background;
 class Bird;
 class Pipe;
+class Score;
+class TextObject;
 
 class Game {
 private:
 	SDL_Window* window;
 	SDL_Renderer* ren;
 
+	int score_val;
+
 	bool isRunning;
 
 	BaseObject* background;
 
 	Bird* bird;
+
+	Score* Coin;
 
 	Mix_Music* Music;
 
@@ -26,6 +32,9 @@ private:
 	Mix_Chunk* hit;
 	Mix_Chunk* point;
 
+	TextObject* T_Plappy;
+	TextObject* T_Bird;
+	TextObject* T_Score;
 public:
 	Game();
 	~Game();

@@ -6,11 +6,14 @@
 
 static int g_heightBottomPipe[3];
 static int g_heightTopPipe[3];
-static int g_xPos[3];
+static int g_xPosPipe[3];
 
 class Pipe : public BaseObject {
+private:
+	int Width;
+	int Height;
 public:
-	Pipe() { ; }
+	Pipe();
 	~Pipe() { ; }
 
 	void Draw(SDL_Renderer* ren) override;
@@ -21,6 +24,10 @@ public:
 
 	void updateTopPipe(int index, bool isPlaying, bool birdDie);
 	void updateBottomPipe(int index, bool isPlaying, bool birdDie);
+
+	int getXPos(int i);
+	int GetHeightBottomPipe(int i);
+	int GetHeightTopPipe(int i);
 
 };
 #endif // !PIPE_H_
