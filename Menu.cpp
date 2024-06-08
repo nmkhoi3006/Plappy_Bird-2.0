@@ -13,33 +13,29 @@ Menu::Menu() {
 }
 
 void Menu::selectButton(SDL_Event e, bool loading, Bird* _bird, Game* _game) {
-	while (loading) {
-		for (Button* b : button) {
-			b->handleIntersection(e);
-		}
-		while (SDL_PollEvent(&e)) {
-			switch (e.type) {
-			case SDL_MOUSEBUTTONDOWN:
-				if (e.button.state == SDL_BUTTON_LEFT) {
-					if (button[PLAY]->intersect) {
-						Update();
-						_bird->playing = true;
-						_bird->start = true;
-						return;
+	for (Button* b : button) {
+		b->handleIntersection(e);
+	}
 
-					}
-					if (button[QUIT]->intersect) {
-						return;
-					}
-				}
-				break;
-			case SDL_QUIT:
-				_game->isRunning = false;
-				break;
-			default:
+	switch (e.type) {
+	case SDL_MOUSEBUTTONDOWN:
+		if (e.button.state == SDL_BUTTON_LEFT) {
+			if (button[PLAY]->intersect) {
+				Update();
+				_bird->playing = true;
+				_bird->start = true;
+				return;
+			}
+			if (button[QUIT]->intersect) {
 				return;
 			}
 		}
+		break;
+	case SDL_QUIT:
+		_game->isRunning = false;
+		break;
+	default:
+		return;
 	}
 }
 

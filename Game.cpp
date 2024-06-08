@@ -193,11 +193,9 @@ void Game::handleEvent() {
 		Music = NULL;
 		break;
 	}
-	case SDL_MOUSEMOTION:
-	{
-		myMenu->selectButton(e, loading, bird, this);
-	}
 	default:
+		myMenu->selectButton(e, loading, bird, this);
+
 		if (Mix_PlayingMusic() == 0)
 		{
 			//Play the music
