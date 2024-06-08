@@ -2,7 +2,7 @@
 
 Menu::Menu() {
 	button[PLAY] = new Button(200, 300);
-	button[QUIT] = new Button(200, 400);
+	button[QUIT] = new Button(200, 450);
 	button[HELP] = new Button(350, 129);
 	button[SOUND] = new Button(200, 231);
 
@@ -22,26 +22,26 @@ void Menu::selectButton(SDL_Event e, bool loading, Bird* _bird, Game* _game) {
 		if (e.button.state == SDL_BUTTON_LEFT) {
 			if (button[PLAY]->intersect) {
 				Update();
+				Mix_PlayChannel(-1, _game->click, 0);
 				_bird->playing = true;
+				button[PLAY]->intersect = false;
 				return;
 			}
-			if (button[QUIT]->intersect) {
+			else if (button[QUIT]->intersect) {
 				_game->isRunning = false;
+				Mix_PlayChannel(-1, _game->click, 0);
+				button[QUIT]->intersect = false;
 				return;
 			}
 		}
 		break;
-	case SDL_QUIT:
-		_game->isRunning = false;
-		break;
-	default:
-		return;
 	}
 }
 
 void Menu::Update() {
 	for (int i = 0; i < 2; i++) {
-		button[i]->SetDest(0, 0, 0, 0);
+		button[i]->SetDest(-100, -100, 0, 0);
+		button[i]->freeButton();
 	}
 }
 

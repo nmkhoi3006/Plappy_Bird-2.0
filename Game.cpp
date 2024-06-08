@@ -25,6 +25,7 @@ Game::Game() {
 	die = NULL;
 	hit = NULL;
 	point = NULL;
+	click = NULL;
 
 	T_Plappy = new TextObject();
 	T_Bird = new TextObject();
@@ -113,6 +114,11 @@ void Game::initAudio() {
 	}
 	point = Mix_LoadWAV("Sound/point.wav");
 	if (point == NULL) {
+		isRunning = false;
+		return;
+	}
+	click = Mix_LoadWAV("Sound/click.wav");
+	if (click == NULL) {
 		isRunning = false;
 		return;
 	}

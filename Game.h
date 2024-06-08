@@ -39,6 +39,7 @@ public:
 	Mix_Chunk* die;
 	Mix_Chunk* hit;
 	Mix_Chunk* point;
+	Mix_Chunk* click;
 
 	bool isRunning;
 

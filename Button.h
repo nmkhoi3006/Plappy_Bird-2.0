@@ -10,6 +10,8 @@ public:
 	void setPosition(int x, int y);
 	void Draw(SDL_Renderer* ren) override;
 	void handleIntersection(SDL_Event e);
+
+	void freeButton();
 	
 };
 
