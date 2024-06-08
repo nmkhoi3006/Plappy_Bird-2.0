@@ -8,7 +8,7 @@ Bird::Bird() {
 	Jumpping = false;
 	playing = false;
 	birdDie = false;
-	//start = false;
+	start = false;
 	movingPipe = false;
 
 	jumpHeight = -10;
@@ -34,36 +34,36 @@ Bird::~Bird() {
 	;
 }
 
-void Bird::update() {
-	if (!playing) {
-		SetDest(0, 0, 0, 0);
-		return;
-	}
+void Bird::update(Game* _game) {
+	//if (!playing) {
+	//	SetDest(0, 0, 0, 0);
+	//	return;
+	//}
+	if (playing) {
+		if (Jumpping) {
+			speed = jumpHeight;
+			Jumpping = false;
+		}
 
-	if (Jumpping) {
-		movingPipe = true;
-		speed = jumpHeight;
-		Jumpping = false;
-	}
+		if (playing && !start) {
+			SetDest(110, 400, BIRD_WIDTH, BIRD_HEIGHT);
+			return;
+		}
 
-	if (playing && start) {
-		SetDest(110, 400, BIRD_WIDTH, BIRD_HEIGHT);
-		return;
-	}
+		if (birdDie) {
+			Jumpping = false;
+		}
 
-	if (birdDie) {
-		Jumpping = false;
-	}
+		if (bird_pos >= SCREEN_HEIGHT - BIRD_HEIGHT - 56) {
+			birdDie = true;
+			bird_pos = SCREEN_HEIGHT - BIRD_HEIGHT - 56;
+			speed = 0;
+		}
 
-	if (bird_pos >= SCREEN_HEIGHT - BIRD_HEIGHT - 56) {
-		birdDie = true;
-		bird_pos = SCREEN_HEIGHT - BIRD_HEIGHT - 56;
-		speed = 0;
+		bird_pos += speed / 4.55;
+		speed += G / 2.5;
+		SetDest(110, (int)bird_pos, BIRD_WIDTH, BIRD_HEIGHT);
 	}
-
-	bird_pos += speed/4.55;
-	speed += G/2.5;
-	SetDest(110, (int)bird_pos, BIRD_WIDTH, BIRD_HEIGHT);
 }
 
 void Bird::SetClip() {
@@ -77,31 +77,16 @@ void Bird::Draw(SDL_Renderer* ren) {
 	SDL_RenderCopy(ren, this->tex, &this->src, &this->dest);
 }
 
-double Bird::GetTimeJump() {
-	return SDL_GetTicks();
-}
-
-void Bird::Jump() {
-	jumpTimer = GetTimeJump();
-	if (jumpTimer - lastJump > 165)
-	{
-		Jumpping = true;
-		lastJump = jumpTimer;
-	}
-	else
-	{
-		Jumpping = false;
-	}
-}
-
 void Bird::HandleInput(SDL_Event e, Mix_Chunk* wing) {
 	switch (e.key.keysym.sym)
 	{
 	case SDLK_SPACE:
 		//Jump();
 		Jumpping = true;
-		start = false;
-		Mix_PlayChannel(-1, wing, 0);
+		start = true;
+		movingPipe = true;
+		if(!birdDie)
+			Mix_PlayChannel(-1, wing, 0);
 		break;
 	default:
 		break;

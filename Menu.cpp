@@ -23,7 +23,6 @@ void Menu::selectButton(SDL_Event e, bool loading, Bird* _bird, Game* _game) {
 			if (button[PLAY]->intersect) {
 				Update();
 				_bird->playing = true;
-				_bird->start = true;
 				return;
 			}
 			if (button[QUIT]->intersect) {

@@ -119,7 +119,7 @@ void Game::initAudio() {
 }
 
 void Game::update() {
-	bird->update();
+	bird->update(this);
 	bird->SetClip();
 
 	for (int i = 0; i < 3; i++) {
@@ -130,14 +130,17 @@ void Game::update() {
 
 	for (int i = 0; i < 3; i++) {
 		if (bird->checkCollision(topPipe[i].GetDest()) || bird->checkCollision(bottomPipe[i].GetDest())) {
-			if (bird->birdDie)
-				continue;
-			Mix_PlayChannel(-1, hit, 0);
-			Mix_PlayChannel(-1, die, 0);
 			bird->birdDie = true;
 
 		}
 		Coin->checkEated(i, bird, point, score_val);
+	}
+
+	if (bird->birdDie) {
+		Mix_PlayChannel(-1, hit, 0);
+		Mix_PlayChannel(-1, die, 0);
+		hit = NULL;
+		die = NULL;
 	}
 
 	std::string tmp = "Score:";
