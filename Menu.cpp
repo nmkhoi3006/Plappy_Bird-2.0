@@ -1,9 +1,9 @@
 #include "Menu.h"
 
 Menu::Menu() {
-	button[PLAY] = new Button(200, 200);
-	button[QUIT] = new Button(50, 50);
-	button[HELP] = new Button(140, 129);
+	button[PLAY] = new Button(200, 300);
+	button[QUIT] = new Button(200, 400);
+	button[HELP] = new Button(350, 129);
 	button[SOUND] = new Button(200, 231);
 
 	/*button[PLAY]->setPosition(230, 450);
@@ -26,6 +26,7 @@ void Menu::selectButton(SDL_Event e, bool loading, Bird* _bird, Game* _game) {
 				return;
 			}
 			if (button[QUIT]->intersect) {
+				_game->isRunning = false;
 				return;
 			}
 		}
@@ -58,5 +59,5 @@ Menu::~Menu() {
 
 void Menu::initMenu(SDL_Renderer* ren) {
 	button[PLAY]->CreateTexture("IMG/Play.png", ren);
-	button[QUIT]->CreateTexture("IMG/play.png", ren);
+	button[QUIT]->CreateTexture("IMG/Quit.png", ren);
 }

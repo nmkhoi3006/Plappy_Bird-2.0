@@ -1,7 +1,5 @@
-﻿  Bird.cpp
+﻿  Menu.cpp
 D:\PlappyBird\PlappyBird\Common_Funtions.h(28,17): warning C4305: 'initializing': truncation from 'double' to 'float'
-  (compiling source file 'Bird.cpp')
+  (compiling source file 'Menu.cpp')
   
-D:\PlappyBird\PlappyBird\Bird.cpp(40,12): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-D:\PlappyBird\PlappyBird\Bird.cpp(53,21): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
   PlappyBird.vcxproj -> D:\PlappyBird\Debug\PlappyBird.exe

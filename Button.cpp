@@ -1,7 +1,6 @@
 #include "Button.h"
 
 Button::Button(int x, int y) {
-	src = { x, y, 100, 100 };
 	dest = { x, y, 100, 100 };
 	intersect = false;
 }
