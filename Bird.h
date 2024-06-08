@@ -16,8 +16,6 @@ private:
 	double jumpTimer;
 	double lastJump;
 
-	bool Jumpping;
-
 	SDL_Rect frameClip[3];
 	int frameWidth;
 	int frameHeight;
@@ -25,6 +23,10 @@ private:
 public:
 	bool playing;
 	bool birdDie;
+	bool Jumpping;
+	bool start;
+
+	bool movingPipe;
 
 	Bird();
 	~Bird();
@@ -39,8 +41,6 @@ public:
 	bool checkCollision(SDL_Rect Object);
 	
 	void SetClip();
-
-	void gameOver();
 
 	bool checkBirdDie();
 

@@ -123,13 +123,15 @@ void Game::update() {
 	bird->SetClip();
 
 	for (int i = 0; i < 3; i++) {
-		topPipe[i].updateTopPipe(i, bird->playing, bird->checkBirdDie());
-		bottomPipe[i].updateBottomPipe(i, bird->playing, bird->checkBirdDie());
+		topPipe[i].updateTopPipe(i, bird->playing, bird->checkBirdDie(), bird->movingPipe);
+		bottomPipe[i].updateBottomPipe(i, bird->playing, bird->checkBirdDie(), bird->movingPipe);
 		Coin->Update(i, topPipe[i]);
 	}
 
 	for (int i = 0; i < 3; i++) {
 		if (bird->checkCollision(topPipe[i].GetDest()) || bird->checkCollision(bottomPipe[i].GetDest())) {
+			if (bird->birdDie)
+				continue;
 			Mix_PlayChannel(-1, hit, 0);
 			Mix_PlayChannel(-1, die, 0);
 			bird->birdDie = true;
@@ -193,7 +195,7 @@ void Game::handleEvent() {
 	}
 	case SDL_MOUSEMOTION:
 	{
-		myMenu->selectButton(e, loading, bird->playing, this->isRunning);
+		myMenu->selectButton(e, loading, bird, this);
 	}
 	default:
 		if (Mix_PlayingMusic() == 0)

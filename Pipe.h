@@ -13,6 +13,7 @@ private:
 	int Width;
 	int Height;
 public:
+
 	Pipe();
 	~Pipe() { ; }
 
@@ -22,8 +23,8 @@ public:
 
 	int randomHeight();
 
-	void updateTopPipe(int index, bool isPlaying, bool birdDie);
-	void updateBottomPipe(int index, bool isPlaying, bool birdDie);
+	void updateTopPipe(int index, bool isPlaying, bool birdDie, bool moving);
+	void updateBottomPipe(int index, bool isPlaying, bool birdDie, bool moving);
 
 	int getXPos(int i);
 	int GetHeightBottomPipe(int i);

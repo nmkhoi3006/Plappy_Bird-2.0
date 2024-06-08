@@ -12,7 +12,7 @@ Menu::Menu() {
 	button[SOUND]->setPosition(245, 100);*/
 }
 
-void Menu::selectButton(SDL_Event e, bool loading, bool& playing, bool& running) {
+void Menu::selectButton(SDL_Event e, bool loading, Bird* _bird, Game* _game) {
 	while (loading) {
 		for (Button* b : button) {
 			b->handleIntersection(e);
@@ -23,7 +23,8 @@ void Menu::selectButton(SDL_Event e, bool loading, bool& playing, bool& running)
 				if (e.button.state == SDL_BUTTON_LEFT) {
 					if (button[PLAY]->intersect) {
 						Update();
-						playing = true;
+						_bird->playing = true;
+						_bird->start = true;
 						return;
 
 					}
@@ -33,10 +34,11 @@ void Menu::selectButton(SDL_Event e, bool loading, bool& playing, bool& running)
 				}
 				break;
 			case SDL_QUIT:
-				running = false;
+				_game->isRunning = false;
 				break;
+			default:
+				return;
 			}
-
 		}
 	}
 }

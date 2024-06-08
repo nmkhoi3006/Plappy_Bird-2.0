@@ -8,6 +8,8 @@ Bird::Bird() {
 	Jumpping = false;
 	playing = false;
 	birdDie = false;
+	//start = false;
+	movingPipe = false;
 
 	jumpHeight = -10;
 	bird_pos = 0;
@@ -38,12 +40,18 @@ void Bird::update() {
 		return;
 	}
 
-	if (birdDie) {
+	if (Jumpping) {
+		movingPipe = true;
+		speed = jumpHeight;
 		Jumpping = false;
 	}
 
-	if (Jumpping) {
-		speed = jumpHeight;
+	if (playing && start) {
+		SetDest(110, 400, BIRD_WIDTH, BIRD_HEIGHT);
+		return;
+	}
+
+	if (birdDie) {
 		Jumpping = false;
 	}
 
@@ -91,8 +99,8 @@ void Bird::HandleInput(SDL_Event e, Mix_Chunk* wing) {
 	{
 	case SDLK_SPACE:
 		//Jump();
-		playing = true;
 		Jumpping = true;
+		start = false;
 		Mix_PlayChannel(-1, wing, 0);
 		break;
 	default:

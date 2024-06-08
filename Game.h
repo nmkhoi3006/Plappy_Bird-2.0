@@ -19,8 +19,6 @@ private:
 
 	int score_val;
 
-	bool isRunning;
-
 	bool loading;
 
 	BaseObject* background;
@@ -41,6 +39,8 @@ public:
 	Mix_Chunk* die;
 	Mix_Chunk* hit;
 	Mix_Chunk* point;
+
+	bool isRunning;
 
 	Game();
 	~Game();
