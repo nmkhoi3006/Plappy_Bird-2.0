@@ -63,7 +63,7 @@ void Game::init(const char* title, int xpos, int ypos, int weidth, int hight) {
 
 	background->CreateTexture("IMG/bg.png", ren);
 
-	bird->CreateTexture("IMG/bird0.png", ren);
+	bird->CreateTexture("IMG/bird.png", ren);
 
 	myMenu->initMenu(ren);
 
@@ -74,6 +74,13 @@ void Game::init(const char* title, int xpos, int ypos, int weidth, int hight) {
 
 	T_Score->Write("Score:", "FontText/123.ttf", ren, 72);
 
+	initAudio();
+
+	isRunning = true;
+
+}
+
+void Game::initAudio() {
 	//init SDL_mixer;
 	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
 	{
@@ -105,17 +112,15 @@ void Game::init(const char* title, int xpos, int ypos, int weidth, int hight) {
 		return;
 	}
 	point = Mix_LoadWAV("Sound/point.wav");
-	if(point == NULL){
+	if (point == NULL) {
 		isRunning = false;
 		return;
 	}
-
-	isRunning = true;
-
 }
 
 void Game::update() {
 	bird->update();
+	bird->SetClip();
 
 	for (int i = 0; i < 3; i++) {
 		topPipe[i].updateTopPipe(i, bird->playing, bird->checkBirdDie());
@@ -127,7 +132,7 @@ void Game::update() {
 		if (bird->checkCollision(topPipe[i].GetDest()) || bird->checkCollision(bottomPipe[i].GetDest())) {
 			Mix_PlayChannel(-1, hit, 0);
 			Mix_PlayChannel(-1, die, 0);
-			bird->gameOver();
+			bird->birdDie = true;
 
 		}
 		Coin->checkEated(i, bird, point, score_val);
@@ -188,7 +193,7 @@ void Game::handleEvent() {
 	}
 	case SDL_MOUSEMOTION:
 	{
-		myMenu->selectButton(e, loading, bird->playing);
+		myMenu->selectButton(e, loading, bird->playing, this->isRunning);
 	}
 	default:
 		if (Mix_PlayingMusic() == 0)

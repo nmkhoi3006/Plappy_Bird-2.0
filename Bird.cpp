@@ -14,19 +14,23 @@ Bird::Bird() {
 	speed = 0;
 	lastJump = 0;
 
+	frameWidth = 92;
+	frameHeight = 64;
+	_frame = 0;
+
+	for (int i = 0; i < 3; i++) {
+		frameClip[i].x = i * frameWidth;
+		frameClip[i].y = 0;
+		frameClip[i].w = frameWidth;
+		frameClip[i].h = frameHeight;
+	}
+
 	//this->src = this->SetScr()
 }
 
 Bird::~Bird() {
 	;
 }
-
-//animation
-//void Bird::SetClip(BaseObject b0, BaseObject b1, BaseObject b2, SDL_Renderer* ren) {
-//	b0.CreateTexture("IMG/bird0.png", ren);
-//	b1.CreateTexture("IMG/bird1.png", ren);
-//	b2.CreateTexture("IMG/bird2.png", ren);
-//}
 
 void Bird::update() {
 	if (!playing) {
@@ -43,9 +47,9 @@ void Bird::update() {
 		Jumpping = false;
 	}
 
-	if (bird_pos >= SCREEN_HEIGHT - BIRD_HEIGHT) {
-		gameOver();
-		bird_pos = SCREEN_HEIGHT - BIRD_HEIGHT;
+	if (bird_pos >= SCREEN_HEIGHT - BIRD_HEIGHT - 56) {
+		birdDie = true;
+		bird_pos = SCREEN_HEIGHT - BIRD_HEIGHT - 56;
 		speed = 0;
 	}
 
@@ -54,8 +58,15 @@ void Bird::update() {
 	SetDest(110, (int)bird_pos, BIRD_WIDTH, BIRD_HEIGHT);
 }
 
+void Bird::SetClip() {
+	++_frame;
+	if (_frame >= 3)
+		_frame = 0;
+	this->src = frameClip[_frame];
+}
+
 void Bird::Draw(SDL_Renderer* ren) {
-	SDL_RenderCopy(ren, this->tex, NULL, &this->dest);
+	SDL_RenderCopy(ren, this->tex, &this->src, &this->dest);
 }
 
 double Bird::GetTimeJump() {
@@ -114,10 +125,6 @@ bool Bird::checkCollision(SDL_Rect Object) {
 	if (leftA >= rightB)
 		return false;
 	return true;
-}
-
-void Bird::gameOver() {
-	birdDie = true;
 }
 
 bool Bird::checkBirdDie() {

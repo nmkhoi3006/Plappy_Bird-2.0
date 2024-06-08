@@ -31,6 +31,10 @@ private:
 
 	Score* Coin;
 
+	TextObject* T_Plappy;
+	TextObject* T_Bird;
+	TextObject* T_Score;
+public:
 	Mix_Music* Music;
 
 	Mix_Chunk* wing;
@@ -38,14 +42,11 @@ private:
 	Mix_Chunk* hit;
 	Mix_Chunk* point;
 
-	TextObject* T_Plappy;
-	TextObject* T_Bird;
-	TextObject* T_Score;
-public:
 	Game();
 	~Game();
 
 	void init(const char* title, int xpos, int ypos, int weidth, int hight);
+	void initAudio();
 	void update();
 	void render();
 	void close();

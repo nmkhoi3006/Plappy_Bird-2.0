@@ -12,7 +12,7 @@ Menu::Menu() {
 	button[SOUND]->setPosition(245, 100);*/
 }
 
-void Menu::selectButton(SDL_Event e, bool loading, bool& playing) {
+void Menu::selectButton(SDL_Event e, bool loading, bool& playing, bool& running) {
 	while (loading) {
 		for (Button* b : button) {
 			b->handleIntersection(e);
@@ -32,7 +32,8 @@ void Menu::selectButton(SDL_Event e, bool loading, bool& playing) {
 					}
 				}
 				break;
-			default:
+			case SDL_QUIT:
+				running = false;
 				break;
 			}
 
