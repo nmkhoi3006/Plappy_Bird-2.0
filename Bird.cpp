@@ -12,7 +12,7 @@ Bird::Bird() {
 	movingPipe = false;
 
 	jumpHeight = -10;
-	bird_pos = 0;
+	bird_pos = 300;
 	speed = 0;
 	lastJump = 0;
 
@@ -35,10 +35,6 @@ Bird::~Bird() {
 }
 
 void Bird::update(Game* _game) {
-	//if (!playing) {
-	//	SetDest(0, 0, 0, 0);
-	//	return;
-	//}
 	if (playing) {
 		if (Jumpping) {
 			speed = jumpHeight;
@@ -50,14 +46,8 @@ void Bird::update(Game* _game) {
 			return;
 		}
 
-		if (birdDie) {
-			Jumpping = false;
-		}
-
 		if (bird_pos >= SCREEN_HEIGHT - BIRD_HEIGHT - 56) {
 			birdDie = true;
-			bird_pos = SCREEN_HEIGHT - BIRD_HEIGHT - 56;
-			speed = 0;
 		}
 
 		bird_pos += speed / 4.55;
