@@ -27,6 +27,9 @@ private:
 
 	Bird* bird;
 
+	Pipe* topPipe[3];
+	Pipe* bottomPipe[3];
+
 	Menu* myMenu;
 
 	Score* Coin;

@@ -1,8 +1,5 @@
 #include "Game.h"
-#include "algorithm"
-
-Pipe topPipe[3];
-Pipe bottomPipe[3];
+#include <algorithm>
 
 Game::Game() {
 	window = NULL;
@@ -15,6 +12,11 @@ Game::Game() {
 	background = new Background();
 
 	bird = new Bird();
+
+	for (int i = 0; i < 3; i++) {
+		topPipe[i] = new Pipe();
+		bottomPipe[i] = new Pipe();
+	}
 
 	myMenu = new Menu();
 
@@ -61,10 +63,10 @@ void Game::init(const char* title, int xpos, int ypos, int weidth, int hight) {
 		SDL_SetRenderDrawColor(ren, 255, 0, 0, 255);
 
 	for (int i = 0; i < 3; i++) {
-		topPipe[i].CreateTexture("IMG/pipeTop.png", ren);
-		bottomPipe[i].CreateTexture("IMG/pipeBottom.png", ren);
+		topPipe[i]->CreateTexture("IMG/pipeTop.png", ren);
+		bottomPipe[i]->CreateTexture("IMG/pipeBottom.png", ren);
 
-		topPipe[i].initPipe(i);
+		topPipe[i]->initPipe(i);
 	}
 
 	background->CreateTexture("IMG/bg.png", ren);
@@ -135,13 +137,13 @@ void Game::update() {
 		bird->SetClip();
 
 		for (int i = 0; i < 3; i++) {
-			topPipe[i].updateTopPipe(i, bird->playing, bird->checkBirdDie(), bird->movingPipe);
-			bottomPipe[i].updateBottomPipe(i, bird->playing, bird->checkBirdDie(), bird->movingPipe);
+			topPipe[i]->updateTopPipe(i, bird->playing, bird->checkBirdDie(), bird->movingPipe);
+			bottomPipe[i]->updateBottomPipe(i, bird->playing, bird->checkBirdDie(), bird->movingPipe);
 			Coin->Update(i, topPipe[i]);
 		}
 
 		for (int i = 0; i < 3; i++) {
-			if (bird->checkCollision(topPipe[i].GetDest()) || bird->checkCollision(bottomPipe[i].GetDest())) {
+			if (bird->checkCollision(topPipe[i]->GetDest()) || bird->checkCollision(bottomPipe[i]->GetDest())) {
 				bird->birdDie = true;
 
 			}
@@ -175,8 +177,8 @@ void Game::render() {
 	bird->Draw(ren);
 
 	for (int i = 0; i < 3; i++) {
-		topPipe[i].Draw(ren);
-		bottomPipe[i].Draw(ren);
+		topPipe[i]->Draw(ren);
+		bottomPipe[i]->Draw(ren);
 	}
 
 	T_Plappy->Draw(ren);
@@ -201,8 +203,8 @@ void Game::close() {
 
 	bird->Free();
 	for (int i = 0; i < 3; i++) {
-		topPipe[i].Free();
-		bottomPipe[i].Free();
+		topPipe[i]->Free();
+		bottomPipe[i]->Free();
 	}
 	over->FreeMenu();
 	myMenu->Free();
@@ -258,13 +260,6 @@ void Game::handleEvent() {
 					//Resume the music
 					Mix_ResumeMusic();
 				}
-				//If the music is playing
-				else// C?N FIX
-				{
-
-					//Pause the music
-					//Mix_PauseMusic();
-				}
 			}
 			break;
 		}
@@ -283,10 +278,10 @@ void Game::newGame() {
 	bird->movingPipe = false;
 
 	for (int i = 0; i < 3; i++) {
-		topPipe[i].CreateTexture("IMG/pipeTop.png", ren);
-		bottomPipe[i].CreateTexture("IMG/pipeBottom.png", ren);
+		topPipe[i]->CreateTexture("IMG/pipeTop.png", ren);
+		bottomPipe[i]->CreateTexture("IMG/pipeBottom.png", ren);
 
-		topPipe[i].initPipe(i);
+		topPipe[i]->initPipe(i);
 	}
 
 	die = Mix_LoadWAV("Sound/die.wav");

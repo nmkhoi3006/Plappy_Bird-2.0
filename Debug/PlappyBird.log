@@ -1,63 +1,11 @@
-﻿  Background.cpp
+﻿  main.cpp
 D:\PlappyBird\PlappyBird\Bird.h(46,44): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-  (compiling source file 'Background.cpp')
+  (compiling source file 'main.cpp')
   
 D:\PlappyBird\PlappyBird\Common_Funtions.h(29,17): warning C4305: 'initializing': truncation from 'double' to 'float'
-  (compiling source file 'Background.cpp')
+  (compiling source file 'main.cpp')
   
-  BaseObject.cpp
-D:\PlappyBird\PlappyBird\Bird.h(46,44): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-  (compiling source file 'BaseObject.cpp')
-  
-D:\PlappyBird\PlappyBird\Common_Funtions.h(29,17): warning C4305: 'initializing': truncation from 'double' to 'float'
-  (compiling source file 'BaseObject.cpp')
-  
-  Bird.cpp
-D:\PlappyBird\PlappyBird\Common_Funtions.h(29,17): warning C4305: 'initializing': truncation from 'double' to 'float'
-  (compiling source file 'Bird.cpp')
-  
-D:\PlappyBird\PlappyBird\Bird.h(46,44): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-  (compiling source file 'Bird.cpp')
-  
-D:\PlappyBird\PlappyBird\Bird.cpp(40,22): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-D:\PlappyBird\PlappyBird\Bird.cpp(47,12): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-D:\PlappyBird\PlappyBird\Bird.cpp(60,21): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-  Button.cpp
-D:\PlappyBird\PlappyBird\Bird.h(46,44): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-  (compiling source file 'Button.cpp')
-  
-D:\PlappyBird\PlappyBird\Common_Funtions.h(29,17): warning C4305: 'initializing': truncation from 'double' to 'float'
-  (compiling source file 'Button.cpp')
-  
-  Game.cpp
-D:\PlappyBird\PlappyBird\Bird.h(46,44): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-  (compiling source file 'Game.cpp')
-  
-D:\PlappyBird\PlappyBird\Common_Funtions.h(29,17): warning C4305: 'initializing': truncation from 'double' to 'float'
-  (compiling source file 'Game.cpp')
-  
-  Menu.cpp
-D:\PlappyBird\PlappyBird\Bird.h(46,44): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-  (compiling source file 'Menu.cpp')
-  
-D:\PlappyBird\PlappyBird\Common_Funtions.h(29,17): warning C4305: 'initializing': truncation from 'double' to 'float'
-  (compiling source file 'Menu.cpp')
-  
-  MenuOver.cpp
-D:\PlappyBird\PlappyBird\Bird.h(46,44): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-  (compiling source file 'MenuOver.cpp')
-  
-D:\PlappyBird\PlappyBird\Common_Funtions.h(29,17): warning C4305: 'initializing': truncation from 'double' to 'float'
-  (compiling source file 'MenuOver.cpp')
-  
-  Pipe.cpp
-D:\PlappyBird\PlappyBird\Bird.h(46,44): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-  (compiling source file 'Pipe.cpp')
-  
-D:\PlappyBird\PlappyBird\Common_Funtions.h(29,17): warning C4305: 'initializing': truncation from 'double' to 'float'
-  (compiling source file 'Pipe.cpp')
-  
-D:\PlappyBird\PlappyBird\Pipe.cpp(18,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+D:\PlappyBird\PlappyBird\main.cpp(29,25): warning C4244: 'argument': conversion from 'Uint64' to 'Uint32', possible loss of data
   Score.cpp
 D:\PlappyBird\PlappyBird\Bird.h(46,44): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
   (compiling source file 'Score.cpp')
@@ -72,13 +20,5 @@ D:\PlappyBird\PlappyBird\Bird.h(46,44): warning C4244: '=': conversion from 'int
 D:\PlappyBird\PlappyBird\Common_Funtions.h(29,17): warning C4305: 'initializing': truncation from 'double' to 'float'
   (compiling source file 'TextObject.cpp')
   
-  main.cpp
-D:\PlappyBird\PlappyBird\Bird.h(46,44): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-  (compiling source file 'main.cpp')
-  
-D:\PlappyBird\PlappyBird\Common_Funtions.h(29,17): warning C4305: 'initializing': truncation from 'double' to 'float'
-  (compiling source file 'main.cpp')
-  
-D:\PlappyBird\PlappyBird\main.cpp(29,25): warning C4244: 'argument': conversion from 'Uint64' to 'Uint32', possible loss of data
   Generating Code...
   PlappyBird.vcxproj -> D:\PlappyBird\Debug\PlappyBird.exe

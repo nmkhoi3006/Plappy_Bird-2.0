@@ -9,12 +9,12 @@ Score::Score() {
 	}
 }
 
-void Score::Update(int i, Pipe a) {
+void Score::Update(int i, Pipe* a) {
 	int x = (PIPE_WIDTH - COIN_WIDTH) / 2;
 	int y = (SPACE - COIN_HEIGHT) / 2;
 
-	xCoin[i] = a.getXPos(i) + x;
-	yCoin[i] = a.GetHeightTopPipe(i) + y;
+	xCoin[i] = a->getXPos(i) + x;
+	yCoin[i] = a->GetHeightTopPipe(i) + y;
 
 	this->SetDest(xCoin[i], yCoin[i], 55, 55);
 
