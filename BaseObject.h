@@ -10,12 +10,11 @@ protected:
 	SDL_Rect dest;
 
 public:
-	BaseObject();
-	~BaseObject();
 	
 	void CreateTexture(const char* file_name, SDL_Renderer* ren);
 	void SetDest(int xPos, int yPOs, int width, int height);
 	void SetSrc(int xPos, int yPos, int width, int height);
+	void Free();
 
 	SDL_Rect GetSrc();
 	SDL_Rect GetDest();

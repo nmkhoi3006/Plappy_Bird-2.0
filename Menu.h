@@ -16,5 +16,7 @@ public:
 	void initMenu(SDL_Renderer* ren);
 	bool sound;
 	void Update();
+
+	void Free();
 	~Menu();
 };

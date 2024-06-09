@@ -1,14 +1,6 @@
 #include "Common_Funtions.h"
 #include "BaseObject.h"
 
-BaseObject::BaseObject() {
-	;
-}
-
-BaseObject::~BaseObject() {
-	;
-}
-
 void BaseObject::CreateTexture(const char* file_name, SDL_Renderer* ren) {
 	SDL_Surface* load_img = IMG_Load(file_name);
 
@@ -51,4 +43,8 @@ SDL_Texture* BaseObject::GetTexture() {
 
 void BaseObject::Draw(SDL_Renderer* ren) {
 	SDL_RenderCopy(ren, tex, NULL, &dest);
+}
+
+void BaseObject::Free() {
+	SDL_DestroyTexture(tex);
 }

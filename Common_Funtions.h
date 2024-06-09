@@ -31,7 +31,7 @@ const float G = 0.3;
 //pipe
 const int PIPE_WIDTH = 50;
 const int PIPE_HEIGHT = 300;
-const int SPACE = 500;//190
+const int SPACE = 190;//190
 const int MOVING_PIPE = 1;
 
 // coin
@@ -41,6 +41,10 @@ const int COIN_HEIGHT = 55;
 //score
 const int SCORE_WIDTH = 80;
 const int SCORE_HEIGHT = 40;
+
+//board
+const int BOARD_WIDTH = 300;
+const int BOARD_HEIGHT = 300;
 
 #endif // !COMMON_FUNTIONS_H_
  

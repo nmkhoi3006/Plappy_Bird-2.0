@@ -80,8 +80,6 @@ void Game::init(const char* title, int xpos, int ypos, int weidth, int hight) {
 
 	//T_Score->Write("Score:", "FontText/123.ttf", ren, 72);
 
-	over->initMenuOver(ren);
-
 	initAudio();
 
 	isRunning = true;
@@ -99,7 +97,7 @@ void Game::initAudio() {
 	//load music
 	Music = Mix_LoadMUS("Sound/gameLoop2.wav");
 	if (Music == NULL) {
-		Mix_VolumeMusic(100);
+		Mix_VolumeMusic(300);
 		isRunning = false;
 		return;
 	}
@@ -161,7 +159,7 @@ void Game::update() {
 		hit = NULL;
 		die = NULL;
 
-
+		over->initMenuOver(ren);
 		hscore_val = max(hscore_val, score_val);
 		over->Update(score_val, hscore_val);
 	}
@@ -200,6 +198,22 @@ void Game::close() {
 	SDL_DestroyWindow(window);
 
 	SDL_DestroyRenderer(ren);
+
+	bird->Free();
+	for (int i = 0; i < 3; i++) {
+		topPipe[i].Free();
+		bottomPipe[i].Free();
+	}
+	over->FreeMenu();
+	myMenu->Free();
+
+	window = NULL;
+	ren = NULL;
+
+	IMG_Quit();
+	TTF_Quit();
+	Mix_Quit();
+	SDL_Quit();
 
 	SDL_Quit();
 }
@@ -278,6 +292,6 @@ void Game::newGame() {
 	die = Mix_LoadWAV("Sound/die.wav");
 	hit = Mix_LoadWAV("Sound/hit.wav"); 
 	over->FreeMenu();
-	over->initMenuOver(ren);
+	//over->initMenuOver(ren);
 	score_val = 0;
 }

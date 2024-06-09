@@ -35,6 +35,7 @@ void Menu::selectButton(SDL_Event e, bool loading, Bird* _bird, Game* _game) {
 					return;
 				}
 				if (button[SOUNDON]->intersect || button[SOUNDOFF]->intersect) {
+					Mix_PlayChannel(-1, _game->click, 0);
 					if (sound) {
 						Mix_PauseMusic();
 						Mix_Pause(-1);
@@ -45,7 +46,7 @@ void Menu::selectButton(SDL_Event e, bool loading, Bird* _bird, Game* _game) {
 
 					}
 					else {
-						Mix_VolumeMusic(100);
+						Mix_VolumeMusic(300);
 						Mix_ResumeMusic();
 						Mix_Resume(-1);
 						sound = true;
@@ -92,7 +93,12 @@ Menu::~Menu() {
 void Menu::initMenu(SDL_Renderer* ren) {
 	button[PLAY]->CreateTexture("IMG/play.png", ren);
 	button[QUIT]->CreateTexture("IMG/quit.png", ren);
-	button[SOUNDON]->CreateTexture("IMG/sound on.png", ren);
-	button[SOUNDOFF]->CreateTexture("IMG/sound off.png", ren);
+	button[SOUNDON]->CreateTexture("IMG/SoundOn.png", ren);
+	button[SOUNDOFF]->CreateTexture("IMG/SoundOff.png", ren);
+}
 
+void Menu::Free() {
+	for (int i = 0; i < 4; i++) {
+		button[i]->freeButton();
+	}
 }

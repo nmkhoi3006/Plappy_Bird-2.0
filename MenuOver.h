@@ -18,7 +18,7 @@ private:
 public:
 	MenuOver();
 	Button* button[2];
-	enum buttonNames { REPLAY, EXIT };
+	enum buttonNames { REPLAY, QUIT };
 
 	void Draw(SDL_Renderer* ren) override;
 	void initMenuOver(SDL_Renderer* ren);
