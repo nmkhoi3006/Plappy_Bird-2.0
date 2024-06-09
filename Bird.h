@@ -4,6 +4,7 @@
 #include "Common_Funtions.h"
 
 class Pipe;
+class Game;
 
 class Bird : public BaseObject {
 private:
@@ -16,26 +17,29 @@ private:
 	double jumpTimer;
 	double lastJump;
 
-	bool Jumpping;
-	bool birdDie;
-
-	//BaseObject b0, b1, b2; 
+	SDL_Rect frameClip[3];
+	int frameWidth;
+	int frameHeight;
+	int _frame;
 public:
 	bool playing;
+	bool birdDie;
+	bool Jumpping;
+	bool start;
+
+	bool movingPipe;
 
 	Bird();
 	~Bird();
 	//void SetClip(BaseObject b0, BaseObject b1, BaseObject b2, SDL_Renderer* ren);
-	void update();
+	void update(Game* _game);
 	void HandleInput(SDL_Event e, Mix_Chunk* wing);
 
 	void Draw(SDL_Renderer* ren) override;
-	void Jump();
-	double GetTimeJump();
 
 	bool checkCollision(SDL_Rect Object);
 
-	void gameOver();
+	void SetClip();
 
 	bool checkBirdDie();
 

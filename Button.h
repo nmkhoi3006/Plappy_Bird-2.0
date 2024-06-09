@@ -7,11 +7,11 @@ public:
 	bool intersect;
 	Button() : intersect(false) {}
 	Button(int x, int y);
-	void setPosition(int x, int y);
 	void Draw(SDL_Renderer* ren) override;
 	void handleIntersection(SDL_Event e);
-	
+
+	void freeButton();
+
 };
 
 #endif // !BUTTON_H_
-
