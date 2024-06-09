@@ -14,8 +14,4 @@ public:
 	
 };
 
-	void freeButton();
-
-};
-
 #endif // !BUTTON_H_

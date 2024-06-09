@@ -16,7 +16,6 @@ class MenuOver;
 class Game {
 private:
 	SDL_Window* window;
-	SDL_Renderer* ren;
 
 	int score_val;
 
@@ -40,6 +39,8 @@ private:
 	MenuOver* over;
 
 public:
+
+	SDL_Renderer* ren;
 	Mix_Music* Music;
 
 	Mix_Chunk* wing;
@@ -63,6 +64,7 @@ public:
 
 	bool Running();
 
+	void newGame();
 };
 
 #endif // !GAME_H_

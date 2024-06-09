@@ -133,21 +133,26 @@ void Game::initAudio() {
 }
 
 void Game::update() {
-	bird->update(this);
-	bird->SetClip();
+	if (!bird->birdDie) {
+		bird->SetClip();
 
-	for (int i = 0; i < 3; i++) {
-		topPipe[i].updateTopPipe(i, bird->playing, bird->checkBirdDie(), bird->movingPipe);
-		bottomPipe[i].updateBottomPipe(i, bird->playing, bird->checkBirdDie(), bird->movingPipe);
-		Coin->Update(i, topPipe[i]);
-	}
-
-	for (int i = 0; i < 3; i++) {
-		if (bird->checkCollision(topPipe[i].GetDest()) || bird->checkCollision(bottomPipe[i].GetDest())) {
-			bird->birdDie = true;
-
+		for (int i = 0; i < 3; i++) {
+			topPipe[i].updateTopPipe(i, bird->playing, bird->checkBirdDie(), bird->movingPipe);
+			bottomPipe[i].updateBottomPipe(i, bird->playing, bird->checkBirdDie(), bird->movingPipe);
+			Coin->Update(i, topPipe[i]);
 		}
-		Coin->checkEated(i, bird, point, score_val);
+
+		for (int i = 0; i < 3; i++) {
+			if (bird->checkCollision(topPipe[i].GetDest()) || bird->checkCollision(bottomPipe[i].GetDest())) {
+				bird->birdDie = true;
+
+			}
+			Coin->checkEated(i, bird, point, score_val);
+		}
+
+		std::string tmp = "Score:";
+		tmp += std::to_string(score_val);
+		T_Score->Write(tmp, "FontText/3.ttf", ren, 72);
 	}
 
 	if (bird->birdDie) {
@@ -161,9 +166,7 @@ void Game::update() {
 		over->Update(score_val, hscore_val);
 	}
 
-	std::string tmp = "Score:";
-	tmp += std::to_string(score_val);
-	T_Score->Write(tmp, "FontText/123.ttf", ren, 72);
+	bird->update(this);
 }
 
 void Game::render() {
@@ -211,16 +214,21 @@ void Game::handleEvent() {
 			break;
 		case SDL_KEYDOWN:
 		{
-			bird->HandleInput(e, wing);
-			Mix_FreeMusic(Music);
-			T_Score->SetDest((SCREEN_WIDTH - SCORE_WIDTH) / 2, 0, SCORE_WIDTH, SCORE_HEIGHT);
-			T_Plappy->SetDest(0, 0, 0, 0);
-			T_Bird->SetDest(0, 0, 0, 0);
-			Music = NULL;
-			break;
+			if (bird->playing) {
+				bird->HandleInput(e, wing);
+				Mix_FreeMusic(Music);
+
+				T_Score->SetDest((SCREEN_WIDTH - SCORE_WIDTH) / 2, 0, SCORE_WIDTH, SCORE_HEIGHT);
+
+				T_Plappy->SetDest(0, 0, 0, 0);
+				T_Bird->SetDest(0, 0, 0, 0);
+				Music = NULL;
+				break;
+			}
 		}
 		default:
 			myMenu->selectButton(e, loading, bird, this);
+			over->handleInput(e, this, bird);
 
 			if (Mix_PlayingMusic() == 0)
 			{
@@ -252,4 +260,24 @@ void Game::handleEvent() {
 
 bool Game::Running() {
 	return isRunning;
+}
+
+void Game::newGame() {
+	bird->birdDie = false;
+	bird->start = false;
+	bird->SetYPos(300);
+	bird->movingPipe = false;
+
+	for (int i = 0; i < 3; i++) {
+		topPipe[i].CreateTexture("IMG/pipeTop.png", ren);
+		bottomPipe[i].CreateTexture("IMG/pipeBottom.png", ren);
+
+		topPipe[i].initPipe(i);
+	}
+
+	die = Mix_LoadWAV("Sound/die.wav");
+	hit = Mix_LoadWAV("Sound/hit.wav"); 
+	over->FreeMenu();
+	over->initMenuOver(ren);
+	score_val = 0;
 }

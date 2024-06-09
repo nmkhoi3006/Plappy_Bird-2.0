@@ -16,10 +16,11 @@ MenuOver::MenuOver() {
 
 void MenuOver::initMenuOver(SDL_Renderer* ren) {
 	board->CreateTexture("IMG/board.png", ren);
-	board->SetDest((SCREEN_WIDTH - 300) / 2, (SCREEN_HEIGHT - 300) / 2, 300, 300);
 
 	button[REPLAY]->CreateTexture("IMG/Replay.png", ren);
 	button[EXIT]->CreateTexture("IMG/Quit.png", ren);
+
+	board->SetDest((SCREEN_WIDTH - 300) / 2, (SCREEN_HEIGHT - 300) / 2, 300, 300);
 
 	button[REPLAY]->SetDest(200, 450, 100, 100);
 	button[EXIT]->SetDest(350, 450, 100, 100);
@@ -44,4 +45,34 @@ void MenuOver::Draw(SDL_Renderer* ren) {
 void MenuOver::Update(int _s_val, int _hs_val) {
 	this->s_val = _s_val;
 	this->hs_val = _hs_val;
+}
+
+void MenuOver::handleInput(SDL_Event e, Game* _game, Bird* _bird) {
+	for (Button* b : button) {
+		b->handleIntersection(e);
+	}
+
+	switch (e.type) {
+	case SDL_MOUSEBUTTONDOWN:
+		if (e.button.state == SDL_BUTTON_LEFT) {
+			if (button[REPLAY]->intersect) {
+				_game->newGame();
+
+				button[REPLAY]->intersect = false;
+			}
+			else if (button[EXIT]->intersect) {
+				//to do
+				;
+			}
+		}
+		break;
+	}
+}
+
+void MenuOver::FreeMenu() {
+	board->SetDest(-100, -100, 0, 0);
+	s->SetDest(-100, -100, 0, 0);
+	hs->SetDest(-100, -100, 0, 0);
+	button[REPLAY]->SetDest(-100, -100, 0, 0);
+	button[EXIT]->SetDest(-100, -100, 0, 0);
 }

@@ -43,5 +43,7 @@ public:
 
 	bool checkBirdDie();
 
+	void SetYPos(int _pos) { this->bird_pos = _pos; }
+
 };
 #endif // !BIRD_H_

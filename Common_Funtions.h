@@ -31,7 +31,7 @@ const float G = 0.3;
 //pipe
 const int PIPE_WIDTH = 50;
 const int PIPE_HEIGHT = 300;
-const int SPACE = 190;//190
+const int SPACE = 500;//190
 const int MOVING_PIPE = 1;
 
 // coin
