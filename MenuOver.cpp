@@ -45,3 +45,23 @@ void MenuOver::Update(int _s_val, int _hs_val) {
 	this->s_val = _s_val;
 	this->hs_val = _hs_val;
 }
+
+void MenuOver::handleInput(SDL_Event e, Game* _game, Bird* _bird) {
+	for (Button* b : button) {
+		b->handleIntersection(e);
+	}
+
+	switch (e.type) {
+	case SDL_MOUSEBUTTONDOWN:
+		if (e.button.state == SDL_BUTTON_LEFT) {
+			if (button[REPLAY]->intersect) {
+				_bird->birdDie = false;
+			}
+			else if (button[EXIT]->intersect) {
+				//to do
+				;
+			}
+		}
+		break;
+	}
+}
