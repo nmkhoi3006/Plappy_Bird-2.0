@@ -18,6 +18,8 @@ void BaseObject::CreateTexture(const char* file_name, SDL_Renderer* ren) {
 		newTexture = SDL_CreateTextureFromSurface(ren, load_img);
 	}
 
+	SDL_FreeSurface(load_img);
+
 	this->tex = newTexture;
 }
 
@@ -48,5 +50,5 @@ SDL_Texture* BaseObject::GetTexture() {
 }
 
 void BaseObject::Draw(SDL_Renderer* ren) {
-	SDL_RenderCopy(ren, tex, &src, &dest);
+	SDL_RenderCopy(ren, tex, NULL, &dest);
 }
