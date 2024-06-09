@@ -32,4 +32,3 @@ public:
 
 };
 #endif // !PIPE_H_
-

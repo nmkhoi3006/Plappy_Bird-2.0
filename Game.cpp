@@ -49,15 +49,15 @@ void Game::init(const char* title, int xpos, int ypos, int weidth, int hight) {
 	}
 
 
-	window = SDL_CreateWindow(title, 
-							  SDL_WINDOWPOS_UNDEFINED,
-		                      SDL_WINDOWPOS_UNDEFINED, 
-		                      SCREEN_WIDTH, SCREEN_HEIGHT, 
-		                      SDL_WINDOW_SHOWN);
+	window = SDL_CreateWindow(title,
+		SDL_WINDOWPOS_UNDEFINED,
+		SDL_WINDOWPOS_UNDEFINED,
+		SCREEN_WIDTH, SCREEN_HEIGHT,
+		SDL_WINDOW_SHOWN);
 
 	ren = SDL_CreateRenderer(window, -1, 0);
 
-	if(ren != NULL)
+	if (ren != NULL)
 		SDL_SetRenderDrawColor(ren, 255, 0, 0, 255);
 
 	for (int i = 0; i < 3; i++) {
@@ -99,6 +99,7 @@ void Game::initAudio() {
 	//load music
 	Music = Mix_LoadMUS("Sound/gameLoop2.wav");
 	if (Music == NULL) {
+		Mix_VolumeMusic(100);
 		isRunning = false;
 		return;
 	}
@@ -155,6 +156,7 @@ void Game::update() {
 		hit = NULL;
 		die = NULL;
 
+
 		hscore_val = max(hscore_val, score_val);
 		over->Update(score_val, hscore_val);
 	}
@@ -202,6 +204,7 @@ void Game::close() {
 void Game::handleEvent() {
 	SDL_Event e;
 	while (SDL_PollEvent(&e)) {
+
 		switch (e.type) {
 		case SDL_QUIT:
 			isRunning = false;
@@ -236,6 +239,7 @@ void Game::handleEvent() {
 				//If the music is playing
 				else// C?N FIX
 				{
+
 					//Pause the music
 					//Mix_PauseMusic();
 				}

@@ -61,6 +61,7 @@ void Bird::update(Game* _game) {
 		speed += G / 2.5;
 		SetDest(110, (int)bird_pos, BIRD_WIDTH, BIRD_HEIGHT);
 	}
+
 }
 
 void Bird::SetClip() {
@@ -82,6 +83,7 @@ void Bird::HandleInput(SDL_Event e, Mix_Chunk* wing) {
 		Jumpping = true;
 		start = true;
 		movingPipe = true;
+
 		if(!birdDie)
 			Mix_PlayChannel(-1, wing, 0);
 		break;

@@ -19,6 +19,7 @@ private:
 	SDL_Renderer* ren;
 
 	int score_val;
+
 	int hscore_val;
 
 	bool loading;
@@ -34,6 +35,7 @@ private:
 	TextObject* T_Plappy;
 	TextObject* T_Bird;
 	TextObject* T_Score;
+
 
 	MenuOver* over;
 

@@ -38,7 +38,7 @@ public:
 	void Draw(SDL_Renderer* ren) override;
 
 	bool checkCollision(SDL_Rect Object);
-	
+
 	void SetClip();
 
 	bool checkBirdDie();

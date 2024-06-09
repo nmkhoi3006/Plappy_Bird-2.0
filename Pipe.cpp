@@ -1,6 +1,7 @@
+
 #include "Pipe.h"
 
-Pipe::Pipe(){
+Pipe::Pipe() {
 	Width = PIPE_WIDTH;
 	Height = PIPE_HEIGHT;
 }

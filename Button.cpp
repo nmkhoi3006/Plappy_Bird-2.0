@@ -5,10 +5,6 @@ Button::Button(int x, int y) {
 	intersect = false;
 }
 
-void Button::setPosition(int x, int y) {
-	dest.x = x;
-	dest.y = y;
-}
 
 void Button::handleIntersection(SDL_Event e) {
 	int x, y;
