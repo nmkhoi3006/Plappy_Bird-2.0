@@ -139,6 +139,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="BaseObject.cpp" />
     <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="MenuOver.cpp" />
     <ClCompile Include="Pipe.cpp" />
     <ClCompile Include="Score.cpp" />
     <ClCompile Include="TextObject.cpp" />
@@ -150,6 +151,7 @@
     <ClInclude Include="Button.h" />
     <ClInclude Include="Common_Funtions.h" />
     <ClInclude Include="Menu.h" />
+    <ClInclude Include="MenuOver.h" />
     <ClInclude Include="TextObject.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Pipe.h" />

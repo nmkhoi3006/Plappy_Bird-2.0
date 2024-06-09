@@ -1,4 +1,5 @@
 #include "Game.h"
+#include "algorithm"
 
 Pipe topPipe[3];
 Pipe bottomPipe[3];
@@ -30,7 +31,11 @@ Game::Game() {
 	T_Plappy = new TextObject();
 	T_Bird = new TextObject();
 	T_Score = new TextObject();
+
+	over = new MenuOver();
+
 	score_val = 0;
+	hscore_val = 0;
 }
 
 Game::~Game() {
@@ -73,7 +78,9 @@ void Game::init(const char* title, int xpos, int ypos, int weidth, int hight) {
 	T_Plappy->SetDest(20, 20, 500, 100);
 	T_Bird->SetDest(100, 150, 300, 100);
 
-	T_Score->Write("Score:", "FontText/123.ttf", ren, 72);
+	//T_Score->Write("Score:", "FontText/123.ttf", ren, 72);
+
+	over->initMenuOver(ren);
 
 	initAudio();
 
@@ -148,6 +155,10 @@ void Game::update() {
 		Mix_PlayChannel(-1, die, 0);
 		hit = NULL;
 		die = NULL;
+
+
+		hscore_val = max(hscore_val, score_val);
+		over->Update(score_val, hscore_val);
 	}
 
 	std::string tmp = "Score:";
@@ -174,6 +185,10 @@ void Game::render() {
 
 	myMenu->Draw(ren);
 	loading = true;
+
+	if (bird->birdDie) {
+		over->Draw(ren);
+	}
 
 	SDL_RenderPresent(ren);
 }
@@ -225,10 +240,13 @@ void Game::handleEvent() {
 				else// C?N FIX
 				{
 
+					//Pause the music
+					//Mix_PauseMusic();
 				}
 			}
 			break;
 		}
+
 	}
 }
 

@@ -11,6 +11,10 @@ public:
 	void handleIntersection(SDL_Event e);
 
 	void freeButton();
+	
+};
+
+	void freeButton();
 
 };
 

@@ -11,6 +11,7 @@ class Score;
 class TextObject;
 class Button;
 class Menu;
+class MenuOver;
 
 class Game {
 private:
@@ -18,6 +19,8 @@ private:
 	SDL_Renderer* ren;
 
 	int score_val;
+
+	int hscore_val;
 
 	bool loading;
 
@@ -32,6 +35,10 @@ private:
 	TextObject* T_Plappy;
 	TextObject* T_Bird;
 	TextObject* T_Score;
+
+
+	MenuOver* over;
+
 public:
 	Mix_Music* Music;
 
