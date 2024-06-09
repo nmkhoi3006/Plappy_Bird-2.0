@@ -58,6 +58,6 @@ Menu::~Menu() {
 }
 
 void Menu::initMenu(SDL_Renderer* ren) {
-	button[PLAY]->CreateTexture("IMG/Play.png", ren);
+	button[PLAY]->CreateTexture("IMG/Play1.png", ren);
 	button[QUIT]->CreateTexture("IMG/Quit.png", ren);
 }

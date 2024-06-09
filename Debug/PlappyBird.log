@@ -1,5 +1,5 @@
-﻿  MenuOver.cpp
+﻿  Menu.cpp
 D:\PlappyBird\PlappyBird\Common_Funtions.h(29,17): warning C4305: 'initializing': truncation from 'double' to 'float'
-  (compiling source file 'MenuOver.cpp')
+  (compiling source file 'Menu.cpp')
   
   PlappyBird.vcxproj -> D:\PlappyBird\Debug\PlappyBird.exe

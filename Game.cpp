@@ -201,46 +201,48 @@ void Game::close() {
 
 void Game::handleEvent() {
 	SDL_Event e;
-	SDL_PollEvent(&e);
-	switch (e.type) {
-	case SDL_QUIT:
-		isRunning = false;
-		break;
-	case SDL_KEYDOWN:
-	{
-		bird->HandleInput(e, wing);
-		Mix_FreeMusic(Music);
-		T_Score->SetDest((SCREEN_WIDTH-SCORE_WIDTH)/2, 0, SCORE_WIDTH, SCORE_HEIGHT);
-		T_Plappy->SetDest(0, 0, 0, 0);
-		T_Bird->SetDest(0, 0, 0, 0);
-		Music = NULL;
-		break;
-	}
-	default:
-		myMenu->selectButton(e, loading, bird, this);
+	while (SDL_PollEvent(&e)) {
+		switch (e.type) {
+		case SDL_QUIT:
+			isRunning = false;
+			break;
+		case SDL_KEYDOWN:
+		{
+			bird->HandleInput(e, wing);
+			Mix_FreeMusic(Music);
+			T_Score->SetDest((SCREEN_WIDTH - SCORE_WIDTH) / 2, 0, SCORE_WIDTH, SCORE_HEIGHT);
+			T_Plappy->SetDest(0, 0, 0, 0);
+			T_Bird->SetDest(0, 0, 0, 0);
+			Music = NULL;
+			break;
+		}
+		default:
+			myMenu->selectButton(e, loading, bird, this);
 
-		if (Mix_PlayingMusic() == 0)
-		{
-			//Play the music
-			Mix_PlayMusic(Music, -1);
-		}
-		//If music is being played
-		else
-		{
-			//If the music is paused
-			if (Mix_PausedMusic() == 1)
+			if (Mix_PlayingMusic() == 0)
 			{
-				//Resume the music
-				Mix_ResumeMusic();
+				//Play the music
+				Mix_PlayMusic(Music, -1);
 			}
-			//If the music is playing
-			else// C?N FIX
+			//If music is being played
+			else
 			{
-				//Pause the music
-				//Mix_PauseMusic();
+				//If the music is paused
+				if (Mix_PausedMusic() == 1)
+				{
+					//Resume the music
+					Mix_ResumeMusic();
+				}
+				//If the music is playing
+				else// C?N FIX
+				{
+					//Pause the music
+					//Mix_PauseMusic();
+				}
 			}
+			break;
 		}
-		break;
+
 	}
 }
 
