@@ -9,8 +9,6 @@ class Menu : public BaseObject {
 private:
 public:
 	BaseObject* help;
-	SDL_Rect frame_clip[60];
-	int _frame;
 
 	Button* button[6];
 	enum buttonNames { PLAY, QUIT, SOUNDON, SOUNDOFF, HELP, BACK };
@@ -22,7 +20,6 @@ public:
 	void Update();
 
 	void setClip(SDL_Event e);
-	void setClipHelp();
 	void DrawHelp(SDL_Renderer* ren);
 
 	void Free();

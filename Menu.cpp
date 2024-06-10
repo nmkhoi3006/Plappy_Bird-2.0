@@ -3,16 +3,6 @@
 Menu::Menu() {
 
 	help = new BaseObject();
-	for (int i = 0; i < 60; i++) {
-		if (i<30)
-			frame_clip[i] = { 0, 0, 169, 34 };
-		else 
-			frame_clip[i] = { 0, 34, 169, 34 };
-		
-	}
-	//frame_clip[0] = { 0, 0, 169, 34 };
-	//frame_clip[1] = { 0, 34, 169, 34 };
-	_frame = 0;
 
 	button[PLAY] = new Button(200, 300);
 	button[QUIT] = new Button(200, 450);
@@ -130,7 +120,7 @@ void Menu::initMenu(SDL_Renderer* ren) {
 
 	button[HELP]->CreateTexture("IMG/1.png", ren);
 	button[BACK]->CreateTexture("IMG/Back.png", ren);
-	help->CreateTexture("IMG/help.png", ren);
+	help->CreateTexture("IMG/2.png", ren);
 
 	button[SOUNDON]->SetDest(500, 600, 100, 100);
 	button[SOUNDOFF]->SetDest(500, 600, 100, 100);
@@ -154,14 +144,6 @@ void Menu::setClip(SDL_Event e) {
 	}
 }
 
-void Menu::setClipHelp() {
-	++_frame;
-	if (_frame > 60)
-		_frame = 0;
-
-}
-
 void Menu::DrawHelp(SDL_Renderer* ren) {
-	SDL_Rect tmp = help->GetDest();
-	SDL_RenderCopy(ren, help->GetTexture(), &frame_clip[_frame], &tmp);
+	help->Draw(ren);
 }
