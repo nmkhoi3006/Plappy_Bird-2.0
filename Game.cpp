@@ -162,7 +162,7 @@ void Game::update() {
 		hscore_val = max(hscore_val, score_val);
 		over->Update(score_val, hscore_val);
 	}
-
+	myMenu->setClipHelp();
 	bird->update(this);
 }
 
@@ -189,6 +189,9 @@ void Game::render() {
 	if (bird->birdDie) {
 		over->Draw(ren);
 	}
+
+	myMenu->DrawHelp(ren);
+	myMenu->button[5]->Draw(ren);
 
 	SDL_RenderPresent(ren);
 }

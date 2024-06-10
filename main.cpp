@@ -7,7 +7,7 @@ Game* game = NULL;
 int main(int arc, char* argv[]) {
 	game = new Game();
 
-	const int FPS = 280;
+	const int FPS = 285;
 	const int DELAY_TIME = 1000 / FPS;
 
 	Uint64 frameStart;
