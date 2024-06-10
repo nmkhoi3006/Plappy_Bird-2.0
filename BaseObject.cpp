@@ -15,6 +15,10 @@ void BaseObject::CreateTexture(const char* file_name, SDL_Renderer* ren) {
 	this->tex = newTexture;
 }
 
+void BaseObject::Draw(SDL_Renderer* ren) {
+	SDL_RenderCopy(ren, tex, NULL, &dest);
+}
+
 void BaseObject::SetDest(int xPos, int yPos, int width, int height) {
 	dest.x = xPos;
 	dest.y = yPos;
@@ -39,10 +43,6 @@ SDL_Rect BaseObject::GetSrc() {
 
 SDL_Texture* BaseObject::GetTexture() {
 	return tex;
-}
-
-void BaseObject::Draw(SDL_Renderer* ren) {
-	SDL_RenderCopy(ren, tex, NULL, &dest);
 }
 
 void BaseObject::Free() {

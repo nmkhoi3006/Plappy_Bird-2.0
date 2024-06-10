@@ -80,12 +80,8 @@ void Game::init(const char* title, int xpos, int ypos, int weidth, int hight) {
 	T_Plappy->SetDest(20, 20, 500, 100);
 	T_Bird->SetDest(100, 150, 300, 100);
 
-	//T_Score->Write("Score:", "FontText/123.ttf", ren, 72);
-
 	initAudio();
-
 	isRunning = true;
-
 }
 
 void Game::initAudio() {
