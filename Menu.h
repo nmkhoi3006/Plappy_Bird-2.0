@@ -17,6 +17,8 @@ public:
 	bool sound;
 	void Update();
 
+	void setClip(SDL_Event e);
+
 	void Free();
 	~Menu();
 };

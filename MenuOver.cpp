@@ -17,8 +17,8 @@ MenuOver::MenuOver() {
 void MenuOver::initMenuOver(SDL_Renderer* ren) {
 	board->CreateTexture("IMG/board.png", ren);
 
-	button[REPLAY]->CreateTexture("IMG/Replay.png", ren);
-	button[QUIT]->CreateTexture("IMG/Quit.png", ren);
+	button[REPLAY]->CreateTexture("IMG/Replay2.png", ren);
+	button[QUIT]->CreateTexture("IMG/Quit1.png", ren);
 
 	int xPos = (SCREEN_WIDTH - BOARD_WIDTH) / 2;
 	int yPos = (SCREEN_HEIGHT - BOARD_HEIGHT) / 2;
@@ -55,7 +55,7 @@ void MenuOver::Update(int _s_val, int _hs_val) {
 
 void MenuOver::handleInput(SDL_Event e, Game* _game, Bird* _bird) {
 	for (Button* b : button) {
-		b->handleIntersection(e);
+		b->handleIntersection();
 	}
 
 	switch (e.type) {
@@ -91,4 +91,10 @@ void MenuOver::FreeMenu() {
 	hs->SetDest(-100, -100, 0, 0);
 	button[REPLAY]->SetDest(-100, -100, 0, 0);
 	button[QUIT]->SetDest(-100, -100, 0, 0);
+}
+
+void MenuOver::setClip() {
+	for (Button* b : button) {
+		b->handleIntersection();
+	}
 }

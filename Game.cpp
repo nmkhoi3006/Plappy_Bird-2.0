@@ -158,6 +158,7 @@ void Game::update() {
 		die = NULL;
 
 		over->initMenuOver(ren);
+		over->setClip();
 		hscore_val = max(hscore_val, score_val);
 		over->Update(score_val, hscore_val);
 	}
@@ -237,6 +238,11 @@ void Game::handleEvent() {
 				Music = NULL;
 				break;
 			}
+		}
+		case SDL_MOUSEMOTION:
+		{
+			myMenu->setClip(e);
+			over->setClip();
 		}
 		default:
 			myMenu->selectButton(e, loading, bird, this);

@@ -4,19 +4,19 @@ Menu::Menu() {
 
 	button[PLAY] = new Button(200, 300);
 	button[QUIT] = new Button(200, 450);
-	button[SOUNDON] = new Button(450, 600);
-	button[SOUNDOFF] = new Button(450, 600);
+	button[SOUNDON] = new Button();
+	button[SOUNDOFF] = new Button();
 	sound = true;
 
 	//button[PLAY]->setPosition(230, 450);
 	//button[QUIT]->setPosition(241, 587);
-	button[SOUNDON]->SetDest(450, 600, 70, 70);
-	button[SOUNDOFF]->SetDest(450, 600, 70, 70);
+	button[SOUNDON]->SetDest(500, 600, 100, 100);
+	button[SOUNDOFF]->SetDest(500, 600, 100, 100);
 }
 
 void Menu::selectButton(SDL_Event e, bool loading, Bird* _bird, Game* _game) {
 		for (Button* b : button) {
-			b->handleIntersection(e);
+			b->handleIntersection();
 		}
 		switch (e.type) {
 		case SDL_MOUSEBUTTONDOWN:
@@ -42,7 +42,7 @@ void Menu::selectButton(SDL_Event e, bool loading, Bird* _bird, Game* _game) {
 						Mix_VolumeMusic(0);
 						sound = false;
 						button[SOUNDON]->SetDest(-100, -100, 0, 0);
-						button[SOUNDOFF]->SetDest(450, 600, 70, 70);
+						button[SOUNDOFF]->SetDest(500, 600, 100, 100);
 
 					}
 					else {
@@ -51,7 +51,7 @@ void Menu::selectButton(SDL_Event e, bool loading, Bird* _bird, Game* _game) {
 						Mix_Resume(-1);
 						sound = true;
 						button[SOUNDOFF]->SetDest(-100, -100, 0, 0);
-						button[SOUNDON]->SetDest(450, 600, 70, 70);
+						button[SOUNDON]->SetDest(500, 600, 100, 100);
 					}
 				}
 				if (_bird->birdDie) {
@@ -72,16 +72,21 @@ void Menu::Update() {
 void Menu::Draw(SDL_Renderer* ren) {
 	for (int i = 0; i < 2; i++) {
 		SDL_Rect dst = button[i]->GetDest();
-		SDL_RenderCopy(ren, button[i]->GetTexture(), NULL, &dst);
+		button[i]->Draw(ren);
+		//SDL_RenderCopy(ren, button[i]->GetTexture(), NULL, &dst);
 	}
 	SDL_Rect dst;
 	if (sound) {
 		dst = button[SOUNDON]->GetDest();
-		SDL_RenderCopy(ren, button[SOUNDON]->GetTexture(), NULL, &dst);
+		button[SOUNDON]->handleIntersection();
+		SDL_Rect _src = button[SOUNDON]->GetSrc();
+		SDL_RenderCopy(ren, button[SOUNDON]->GetTexture(), &_src, &dst);
 	}
 	else {
 		dst = button[SOUNDOFF]->GetDest();
-		SDL_RenderCopy(ren, button[SOUNDOFF]->GetTexture(), NULL, &dst);
+		button[SOUNDON]->handleIntersection();
+		SDL_Rect _src = button[SOUNDON]->GetSrc();
+		SDL_RenderCopy(ren, button[SOUNDOFF]->GetTexture(), &_src, &dst);
   }
 }
 
@@ -91,14 +96,20 @@ Menu::~Menu() {
 }
 
 void Menu::initMenu(SDL_Renderer* ren) {
-	button[PLAY]->CreateTexture("IMG/play.png", ren);
-	button[QUIT]->CreateTexture("IMG/quit.png", ren);
-	button[SOUNDON]->CreateTexture("IMG/SoundOn.png", ren);
-	button[SOUNDOFF]->CreateTexture("IMG/SoundOff.png", ren);
+	button[PLAY]->CreateTexture("IMG/Play1.png", ren);
+	button[QUIT]->CreateTexture("IMG/Quit1.png", ren);
+	button[SOUNDON]->CreateTexture("IMG/SoundOn1.png", ren);
+	button[SOUNDOFF]->CreateTexture("IMG/SoundOff1.png", ren);
 }
 
 void Menu::Free() {
 	for (int i = 0; i < 4; i++) {
 		button[i]->freeButton();
+	}
+}
+
+void Menu::setClip(SDL_Event e) {
+	for (Button* b : button) {
+		b->handleIntersection();
 	}
 }

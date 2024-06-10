@@ -23,6 +23,7 @@ public:
 	void Draw(SDL_Renderer* ren) override;
 	void initMenuOver(SDL_Renderer* ren);
 	void Update(int _s_val, int _hs_val);
+	void setClip();
 
 	void handleInput(SDL_Event e, Game* _game, Bird*_bird);
 	void FreeMenu();

@@ -4,11 +4,12 @@
 
 class Button : public BaseObject {
 public:
+	SDL_Rect frame_clip[2];
 	bool intersect;
-	Button() : intersect(false) {}
+	Button();
 	Button(int x, int y);
 	void Draw(SDL_Renderer* ren) override;
-	void handleIntersection(SDL_Event e);
+	void handleIntersection();
 
 	void freeButton();
 	

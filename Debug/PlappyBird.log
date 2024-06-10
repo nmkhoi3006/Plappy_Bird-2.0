@@ -1,9 +1,8 @@
-﻿  main.cpp
+﻿  Menu.cpp
 D:\PlappyBird\PlappyBird\Bird.h(46,44): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-  (compiling source file 'main.cpp')
+  (compiling source file 'Menu.cpp')
   
 D:\PlappyBird\PlappyBird\Common_Funtions.h(29,17): warning C4305: 'initializing': truncation from 'double' to 'float'
-  (compiling source file 'main.cpp')
+  (compiling source file 'Menu.cpp')
   
-D:\PlappyBird\PlappyBird\main.cpp(29,25): warning C4244: 'argument': conversion from 'Uint64' to 'Uint32', possible loss of data
   PlappyBird.vcxproj -> D:\PlappyBird\Debug\PlappyBird.exe
